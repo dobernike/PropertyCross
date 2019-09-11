@@ -1,0 +1,21 @@
+{
+  "name": "laboratory_practice",
+  "version": "1.0.0",
+  "description": "laboratory_practice",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dobernike/laboratory_practice.git"
+  },
+  "keywords": [],
+  "author": "dobernike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dobernike/laboratory_practice/issues"
+  },
+  "homepage": "https://github.com/dobernike/laboratory_practice#readme",
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1"
+  }
+}
