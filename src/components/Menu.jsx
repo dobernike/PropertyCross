@@ -1,15 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import link from '../styles/Link.css';
 
 function Menu() {
     return (
         <nav>
-            <Link exact="true" to="/">
+            <NavLink exact="true" to="/" activeClassName={link.active}>
                 Главная
-            </Link>
-            <Link to="/page1">Page 1</Link>
-            <Link to="/page2">Page 2</Link>
-            <Link to="/page3">Page 3</Link>
+            </NavLink>
+            <NavLink to="/page1" activeClassName={link.active}>
+                Page 1
+            </NavLink>
+            <NavLink to="/page2" activeClassName={link.active}>
+                Page 2
+            </NavLink>
+            <NavLink to="/page3" activeClassName={link.active}>
+                Page 3
+            </NavLink>
         </nav>
     );
 }
