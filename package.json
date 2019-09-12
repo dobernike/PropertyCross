@@ -1,55 +1,71 @@
 {
-  "name": "laboratory_practice",
-  "version": "1.0.0",
-  "description": "laboratory_practice",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dobernike/laboratory_practice.git"
-  },
-  "keywords": [],
-  "author": "dobernike",
-  "license": "ISC",
-  "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
-  },
-  "bugs": {
-    "url": "https://github.com/dobernike/laboratory_practice/issues"
-  },
-  "homepage": "https://github.com/dobernike/laboratory_practice#readme",
-  "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.6.1",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-react-css-modules": "^5.2.6",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-node": "^4.0.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "html-webpack-plugin": "^3.2.0",
-    "postcss-loader": "^3.0.0",
-    "prettier": "^1.18.2",
-    "reset-css": "^4.0.1",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8",
-    "webpack-dev-server": "^3.8.0"
-  },
-  "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
-    "redux": "^4.0.4"
-  }
+    "name": "laboratory_practice",
+    "version": "1.0.0",
+    "description": "laboratory_practice",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dobernike/laboratory_practice.git"
+    },
+    "keywords": [],
+    "author": "dobernike",
+    "license": "ISC",
+    "scripts": {
+        "start": "webpack-dev-server --mode development --open --hot",
+        "build": "webpack --mode production",
+        "lint": "eslint --debug src/",
+        "lint:write": "eslint --debug src/ --fix",
+        "prettier": "prettier --write src/**/*.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.(js|jsx)": [
+            "npm run lint:write",
+            "git add"
+        ]
+    },
+    "bugs": {
+        "url": "https://github.com/dobernike/laboratory_practice/issues"
+    },
+    "homepage": "https://github.com/dobernike/laboratory_practice#readme",
+    "devDependencies": {
+        "@babel/core": "^7.6.0",
+        "@babel/preset-env": "^7.6.0",
+        "@babel/preset-react": "^7.0.0",
+        "autoprefixer": "^9.6.1",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-react-css-modules": "^5.2.6",
+        "css-loader": "^3.2.0",
+        "eslint": "^6.1.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-node": "^4.0.0",
+        "eslint-config-prettier": "^6.3.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-node": "^10.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "html-webpack-plugin": "^3.2.0",
+        "husky": "^3.0.5",
+        "lint-staged": "^9.2.5",
+        "postcss-loader": "^3.0.0",
+        "prettier": "^1.18.2",
+        "reset-css": "^4.0.1",
+        "style-loader": "^1.0.0",
+        "webpack": "^4.39.3",
+        "webpack-cli": "^3.3.8",
+        "webpack-dev-server": "^3.8.0"
+    },
+    "dependencies": {
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-redux": "^7.1.1",
+        "react-router-dom": "^5.0.1",
+        "redux": "^4.0.4"
+    }
 }
