@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Page1, Page2, Page3 } from './pages';
 import Menu from './Menu';
 
+import 'reset-css';
 import styles from '../styles/App.css';
 
 function App() {
