@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Menu() {
     return (
         <nav>
-            <Link exact to="/">
+            <Link exact="true" to="/">
                 Главная
             </Link>
             <Link to="/page1">Page 1</Link>

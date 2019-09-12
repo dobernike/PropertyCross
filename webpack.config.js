@@ -17,13 +17,25 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: {
+                                localIdentName: '[name]__[hash:base64:5]',
+                            },
+                        },
+                    },
+                    'postcss-loader',
+                ],
             },
         ],
     },
     devServer: {
         historyApiFallback: true,
-      },
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
