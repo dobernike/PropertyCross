@@ -1,8 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('babel-polyfill');
+const postcssNesting = require('postcss-nested');
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: ['babel-polyfill', './src/index.jsx'],
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index-bundle.js',
@@ -28,7 +30,13 @@ module.exports = {
                             },
                         },
                     },
-                    'postcss-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [postcssNesting()],
+                        },
+                    },
                 ],
             },
         ],

@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './store/reducers/rootReducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer);
+import rootReducer from './store/reducers/rootReducer';
+import ErrorBoundary from './components/Error/ErrorBoundary/ErrorBoundary';
+import App from './components/App/App';
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <ErrorBoundary>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ErrorBoundary>
     </Provider>,
     document.getElementById('root')
 );

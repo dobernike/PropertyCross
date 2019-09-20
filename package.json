@@ -34,11 +34,13 @@
     "homepage": "https://github.com/dobernike/laboratory_practice#readme",
     "devDependencies": {
         "@babel/core": "^7.6.0",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
         "autoprefixer": "^9.6.1",
         "babel-loader": "^8.0.6",
         "babel-plugin-react-css-modules": "^5.2.6",
+        "classnames": "^2.2.6",
         "css-loader": "^3.2.0",
         "eslint": "^6.1.0",
         "eslint-config-airbnb": "^18.0.1",
@@ -54,7 +56,11 @@
         "husky": "^3.0.5",
         "lint-staged": "^9.2.5",
         "postcss-loader": "^3.0.0",
+        "postcss-nested": "^4.1.2",
         "prettier": "^1.18.2",
+        "prop-types": "^15.7.2",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
         "reset-css": "^4.0.1",
         "style-loader": "^1.0.0",
         "webpack": "^4.39.3",
@@ -62,6 +68,7 @@
         "webpack-dev-server": "^3.8.0"
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "react-redux": "^7.1.1",
