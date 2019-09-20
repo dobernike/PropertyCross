@@ -87,7 +87,7 @@ module.exports = {
         ],
         'newline-after-var': [
             // Нужно влкючить, когда поправят баг с добавлением пробела перед let
-            0,
+            2,
             'always',
         ],
         'new-cap': [
@@ -151,7 +151,7 @@ module.exports = {
         'react/jsx-key': 2,
         'react/destructuring-assignment': 0,
         'react/no-find-dom-node': 1,
-        'react/require-optimization': [1, { allowDecorators: ['pureRender', 'connect'] }],
+        'react/require-optimization': [0, { allowDecorators: ['pureRender', 'connect'] }], // Поставил 0, Не нужен без ts
         'react/jsx-filename-extension': 0,
         'react/jsx-no-target-blank': 2,
         'react/no-children-prop': 1, // как починят, включить
@@ -174,7 +174,7 @@ module.exports = {
                 ignoreStateless: true,
             },
         ],
-        'react/button-has-type': 1,
+        'react/button-has-type': 0, // поставил 0, не видит type через переменную
         'react/no-unused-prop-types': 1,
         'react/no-deprecated': 1, // Много error, позже нужно будет включить до error
         'react/sort-comp': [
