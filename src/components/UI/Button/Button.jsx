@@ -18,7 +18,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    type: 'text',
+    type: 'button',
 };
 
 export default Button;

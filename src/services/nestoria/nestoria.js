@@ -1,10 +1,19 @@
 export const API_URL = 'http://api.nestoria.co.uk/api';
 
-export function checkJsonResponceCode(json) {
-    const responceCode = Number(json.response.application_response_code);
+export function checkJsonResponce(res) {
+    const responceCode = Number(res.application_response_code);
 
     if (responceCode === 200 || responceCode === 202) {
-        throw new Error('Wrong search');
+        throw new Error(res.application_response_text);
     }
+
     return true;
+}
+
+export async function getJson(response) {
+    const json = await response.json();
+
+    checkJsonResponce(json.response);
+
+    return json.response;
 }
