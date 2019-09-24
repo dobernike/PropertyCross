@@ -25,9 +25,13 @@ class SearchPageForm extends Component {
     };
 
     handleSubmit = (e) => {
+        e.preventDefault();
         const { value } = this.state;
 
-        e.preventDefault();
+        if (value === '') {
+            return false;
+        }
+
         return this.props
             .fetchSearch(value)
             .then(() => this.setState({ isRedirect: true }))
@@ -38,7 +42,7 @@ class SearchPageForm extends Component {
         const { value, isRedirect, errorMessage } = this.state;
 
         if (isRedirect) {
-            return <Redirect to={`/result?city=${value}`} />;
+            return <Redirect to={`/result?${value}`} />;
         }
 
         return (

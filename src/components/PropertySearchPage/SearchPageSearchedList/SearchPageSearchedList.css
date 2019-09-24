@@ -1,3 +1,7 @@
+.info {
+    margin-bottom: 0.5rem;
+}
+
 .list {
     flex-grow: 1;
 

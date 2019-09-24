@@ -5,7 +5,7 @@ import 'reset-css';
 import Layout from '../Layout/Layout';
 import PropertySearchPage from '../PropertySearchPage/PropertySearchPage';
 import TodoFavouritesPage from '../../containers/TODO-FavouritesPage/TODO-FavouritesPage';
-import TodoSearchResultPage from '../../containers/TODO-SearchResultPage/TODO-SearchResultPage';
+import SearchResultPage from '../SearchResultsPage/SearchResultsPage';
 import TodoPropertyListingPage from '../../containers/TODO-PropertyListingPage/TODO-PropertyListingPage';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Layout>
             <Switch>
                 <Route path="/" exact component={PropertySearchPage} />
-                <Route path="/result" component={TodoSearchResultPage} />
+                <Route path="/result:city?" component={SearchResultPage} />
                 <Route path="/listing" component={TodoPropertyListingPage} />
                 <Route path="/favourites" component={TodoFavouritesPage} />
             </Switch>

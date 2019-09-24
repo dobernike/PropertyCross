@@ -18,8 +18,9 @@ class SearchPageSearchedList extends Component {
 
         return (
             <>
-                <Text>Recent searches:</Text>
-
+                <div className={styles.info}>
+                    <Text>Recent searches:</Text>
+                </div>
                 <ul className={styles.list}>
                     {searchedList.length > 0 ? (
                         searchedList.map((item) => <SearchPageItem key={item} item={item} />)
