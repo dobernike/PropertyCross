@@ -13,8 +13,7 @@ class SearchResultsPage extends Component {
         currentPage: 1,
         hasMore: true,
         results: [],
-        errorMessage: null,
-        totalPages: null,
+        totalPages: 0,
     };
 
     componentDidMount() {
@@ -42,12 +41,12 @@ class SearchResultsPage extends Component {
     render() {
         const { results, totalPages, errorMessage, hasMore } = this.state;
 
-        if (!results.length) {
-            return <div>loading...</div>;
+        if (errorMessage) {
+            return <div>{errorMessage.toString()}</div>;
         }
 
-        if (errorMessage !== null) {
-            return <div>{errorMessage.toString()}</div>;
+        if (!results.length) {
+            return <div>loading...</div>;
         }
 
         return (

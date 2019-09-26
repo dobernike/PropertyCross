@@ -10,7 +10,7 @@ export function checkJsonResponce(res) {
     return true;
 }
 
-export async function getJson(response) {
+export async function getApartmentsData(response) {
     const json = await response.json();
 
     checkJsonResponce(json.response);

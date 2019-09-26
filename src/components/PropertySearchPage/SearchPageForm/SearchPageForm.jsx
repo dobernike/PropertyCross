@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './SearchPageForm.css';
-import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
-import CustomLink from '../../components/UI/CustomLink/CustomLink';
-import SearchPageSearchedList from '../../components/PropertySearchPage/SearchPageSearchedList/SearchPageSearchedList';
-import fetchSearch from '../../store/actions/fetchSearch';
-import ErrorIndicator from '../../components/Error/ErrorIndicator/ErrorIndicator';
+import Input from '../../UI/Input/Input';
+import Button from '../../UI/Button/Button';
+import SearchPageSearchedList from '../SearchPageSearchedList/SearchPageSearchedList';
+import fetchSearch from '../../../store/actions/fetchSearch';
+import fetchCoords from '../../../store/actions/fetchCoords';
+import ErrorIndicator from '../../Error/ErrorIndicator/ErrorIndicator';
 
 class SearchPageForm extends Component {
     state = {
         value: '',
         isRedirect: false,
-        errorMessage: null,
+        errorMessage: '',
     };
 
     handleChange = (e) => {
@@ -38,6 +38,18 @@ class SearchPageForm extends Component {
             .catch((err) => this.setState({ errorMessage: err.toString() }));
     };
 
+    handleClick = () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            return fetchCoords(`${position.coords.latitude},${position.coords.longitude}`)
+                .then(this.props.fetchSearch)
+                .catch(() => {
+                    this.setState({ value: 'London' });
+                    this.props.fetchSearch('London');
+                })
+                .then(() => this.setState({ isRedirect: true }));
+        });
+    };
+
     render() {
         const { value, isRedirect, errorMessage } = this.state;
 
@@ -52,9 +64,11 @@ class SearchPageForm extends Component {
                     <div className={styles.submitButton}>
                         <Button type="submit">Go</Button>
                     </div>
-                    <CustomLink href="/result">My location</CustomLink>
+                    <Button type="button" onClick={this.handleClick}>
+                        My location
+                    </Button>
                 </div>
-                {errorMessage === null ? <SearchPageSearchedList /> : <ErrorIndicator errorMessage={errorMessage} />}
+                {errorMessage === '' ? <SearchPageSearchedList /> : <ErrorIndicator errorMessage={errorMessage} />}
             </form>
         );
     }

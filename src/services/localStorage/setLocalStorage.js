@@ -1,12 +1,15 @@
 import getLocalStorage from './getLocalStorage';
+import includes from '@ramda/includes';
 
 const setLocalStorage = (key, value) => {
     const storage = getLocalStorage(key);
 
-    storage.push(value);
-    const serializedState = JSON.stringify(storage);
+    if (!includes(value, storage)) {
+        storage.unshift(value);
+        const serializedState = JSON.stringify(storage);
 
-    localStorage.setItem(key, serializedState);
+        localStorage.setItem(key, serializedState);
+    }
 };
 
 export default setLocalStorage;
