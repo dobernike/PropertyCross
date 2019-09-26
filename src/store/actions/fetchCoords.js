@@ -7,13 +7,16 @@ const defaultParams = {
     action: 'search_listings',
     encoding: 'json',
     listing_type: 'buy',
+    page: '1',
 };
 
-async function getApartmens(placeName, pageNumber) {
-    const params = { ...defaultParams, page: pageNumber, place_name: placeName };
+async function fetchCoords(coords) {
+    const params = { ...defaultParams, centre_point: coords };
     const response = await fetch(`${getApi(API_URL, params)}`);
 
-    return getApartmentsData(response);
+    const apartmentsData = await getApartmentsData(response);
+
+    return apartmentsData.locations[0].place_name;
 }
 
-export default getApartmens;
+export default fetchCoords;

@@ -11,6 +11,7 @@ function fetchSearch(searchItem) {
 
         setLocalStorage(SEARCH_STORAGE, searchItem);
         dispatch(searchedListLoad(SEARCH_STORAGE));
+        return searchItem;
     };
 }
 

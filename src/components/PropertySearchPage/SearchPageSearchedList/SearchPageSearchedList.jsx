@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,12 +10,25 @@ import { SEARCH_STORAGE } from '../../../store/constants/constants';
 import searchedListLoad from '../../../store/actions/searchedListLoad';
 
 class SearchPageSearchedList extends Component {
+    state = {
+        redirectValue: '',
+    };
+
     componentDidMount() {
         this.props.searchedListLoad(SEARCH_STORAGE);
     }
 
+    handleRedirect = (redirectValue) => {
+        this.setState({ redirectValue });
+    };
+
     render() {
+        const { redirectValue } = this.state;
         const { searchedList } = this.props;
+
+        if (redirectValue !== '') {
+            return <Redirect to={`/result?${redirectValue}`} />;
+        }
 
         return (
             <>
@@ -23,7 +37,9 @@ class SearchPageSearchedList extends Component {
                 </div>
                 <ul className={styles.list}>
                     {searchedList.length > 0 ? (
-                        searchedList.map((item) => <SearchPageItem key={item} item={item} />)
+                        searchedList.map((item) => (
+                            <SearchPageItem key={item} item={item} onClick={this.handleRedirect} />
+                        ))
                     ) : (
                         <p>Ваша история поиска чиста</p>
                     )}

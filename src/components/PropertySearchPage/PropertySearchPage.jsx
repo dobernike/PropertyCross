@@ -4,7 +4,7 @@ import CustomLink from '../UI/CustomLink/CustomLink';
 import styles from './PropertySearchPage.css';
 import Text from '../UI/Typography/Text/Text';
 import Title from '../UI/Typography/Title/Title';
-import SearchPageForm from '../../containers/SearchPageForm/SearchPageForm';
+import SearchPageForm from './SearchPageForm/SearchPageForm';
 
 function PropertySearchPage() {
     return (
