@@ -5,6 +5,7 @@ import 'reset-css';
 import Layout from '../Layout/Layout';
 import PropertySearchPage from '../PropertySearchPage/PropertySearchPage';
 import SearchResultPage from '../SearchResultsPage/SearchResultsPage';
+import FavouritesPage from '../FavouritesPage/FavouritesPage';
 
 function App() {
     return (
@@ -12,8 +13,8 @@ function App() {
             <Switch>
                 <Route path="/" exact component={PropertySearchPage} />
                 <Route path="/result:city?" component={SearchResultPage} />
+                <Route path="/favourites" exact component={FavouritesPage} />
                 <Route path="/listing" component={() => {}} />
-                <Route path="/favourites" component={() => {}} />
             </Switch>
         </Layout>
     );
