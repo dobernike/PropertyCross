@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './FavouritesPage.css';
+import Title from '../UI/Typography/Title/Title';
+import Text from '../UI/Typography/Text/Text';
 import ResultPageCart from '../SearchResultsPage/ResultPageCart/ResultPageCart';
 import getFavourite from '../../store/actions/getFavourite';
+import getApartmentId from '../../utils/getApartmentId';
+
 class FavouritesPage extends Component {
     state = {
         favorites: [],
@@ -15,22 +19,30 @@ class FavouritesPage extends Component {
     }
 
     render() {
+        const { favorites } = this.state;
+
         return (
             <>
-                <p className={styles.text}>Favourites</p>
-                <ul>
-                    {this.state.favorites.map((favorite) => (
-                        <ResultPageCart
-                            key={favorite.lister_url}
-                            city={favorite.city}
-                            id={favorite.lister_url.match(/(\d{5,})/g)[0]}
-                            image={favorite.thumb_url}
-                            price={favorite.price_formatted}
-                            bedroomNumber={+favorite.bedroom_number}
-                            title={favorite.title}
-                        />
-                    ))}
-                </ul>
+                <Title>Favourites</Title>
+                {favorites.length ? (
+                    <ul>
+                        {this.state.favorites.map((favorite) => (
+                            <ResultPageCart
+                                key={favorite.lister_url}
+                                city={favorite.city}
+                                id={getApartmentId(favorite)}
+                                image={favorite.thumb_url}
+                                price={favorite.price_formatted}
+                                bedroomNumber={+favorite.bedroom_number}
+                                title={favorite.title}
+                            />
+                        ))}
+                    </ul>
+                ) : (
+                    <div className={styles.text}>
+                        <Text center>You don`t have favorite item</Text>
+                    </div>
+                )}
             </>
         );
     }

@@ -3,9 +3,9 @@ import getApartmentId from '../../utils/getApartmentId';
 
 async function getApartment(props) {
     const { apartments, apartmentId, city, numberPageLoad } = props;
-    const apartment = apartments.filter((apartmentData) => getApartmentId(apartmentData) === apartmentId);
+    const apartment = apartments.find((apartmentData) => getApartmentId(apartmentData) === apartmentId);
 
-    if (!apartment.length) {
+    if (!apartment) {
         return getApartmens(city, numberPageLoad).then((response) =>
             getApartment({
                 apartments: response.listings,
@@ -16,7 +16,7 @@ async function getApartment(props) {
         );
     }
 
-    return apartment[0];
+    return apartment;
 }
 
 export default getApartment;

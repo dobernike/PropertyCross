@@ -12,6 +12,7 @@ module.exports = {
     env: {
         browser: true,
         node: true,
+        jest: true,
     },
     settings: {
         'import/parser': 'babel-eslint',
@@ -121,7 +122,6 @@ module.exports = {
         'jsx-a11y/iframe-has-title': 1,
         'jsx-a11y/no-autofocus': 1,
         'jsx-a11y/media-has-caption': 1,
-        'jsx-a11y/label-has-associated-control': 1,
         'jsx-a11y/no-noninteractive-tabindex': 1,
         'jsx-a11y/no-noninteractive-element-to-interactive-role': 1,
         'jsx-a11y/interactive-supports-focus': 1,
