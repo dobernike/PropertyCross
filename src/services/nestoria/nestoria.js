@@ -7,6 +7,10 @@ export function checkJsonResponce(res) {
         throw new Error(res.application_response_text);
     }
 
+    if (res.page > res.total_pages) {
+        throw new Error('Undefined url: searching page is over total pages');
+    }
+
     return true;
 }
 

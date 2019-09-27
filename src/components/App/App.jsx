@@ -6,6 +6,7 @@ import Layout from '../Layout/Layout';
 import PropertySearchPage from '../PropertySearchPage/PropertySearchPage';
 import SearchResultPage from '../SearchResultsPage/SearchResultsPage';
 import FavouritesPage from '../FavouritesPage/FavouritesPage';
+import PropertyListingPage from '../PropertyListingPage/PropertyListingPage';
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                 <Route path="/" exact component={PropertySearchPage} />
                 <Route path="/result:city?" component={SearchResultPage} />
                 <Route path="/favourites" exact component={FavouritesPage} />
-                <Route path="/listing" component={() => {}} />
+                <Route path="/listing:apartment?" exact component={PropertyListingPage} />
             </Switch>
         </Layout>
     );

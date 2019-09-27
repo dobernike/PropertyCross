@@ -38,6 +38,7 @@
         "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
         "@ramda/includes": "^0.26.1",
+        "@ramda/indexby": "^0.26.1",
         "autoprefixer": "^9.6.1",
         "babel-loader": "^8.0.6",
         "babel-plugin-react-css-modules": "^5.2.6",

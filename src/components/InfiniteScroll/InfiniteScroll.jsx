@@ -5,10 +5,14 @@ import throttle from '../../utils/throttle';
 
 class InfiniteScroll extends Component {
     componentDidMount() {
-        window.addEventListener('scroll', throttle(this.handleScroll, 500));
+        window.addEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll = () => {
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = throttle(() => {
         const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
         const { body } = document;
         const html = document.documentElement;
@@ -26,7 +30,7 @@ class InfiniteScroll extends Component {
                 this.props.loadMore();
             }
         }
-    };
+    }, 500);
 
     render() {
         return <>{this.props.children}</>;
