@@ -25,7 +25,9 @@ class PropertyListingPage extends Component {
             city: this.state.city,
             numberPageLoad: 1,
         })
-            .then((apartment) => this.setState({ apartment, isFavorite: isApartmentInStorage('favorites', apartment) }))
+            .then((apartment) =>
+                this.setState({ apartment, isFavorite: isApartmentInStorage('favorites', apartment, this.state.city) })
+            )
             .catch((err) => this.setState({ errorMessage: err }));
     }
 
