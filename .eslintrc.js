@@ -1,14 +1,14 @@
 const path = require('path');
 
 module.exports = {
-    extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
+    extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react', 'plugin:sonarjs/recommended'],
     parser: 'babel-eslint',
     parserOptions: {
         ecmaFeatures: {
             legacyDecorators: true,
         },
     },
-    plugins: ['react', 'jsx-a11y', 'import'],
+    plugins: ['react', 'jsx-a11y', 'import', 'sonarjs'],
     env: {
         browser: true,
         node: true,
