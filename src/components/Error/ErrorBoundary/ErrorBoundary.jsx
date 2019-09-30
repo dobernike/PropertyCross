@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
-export default class ErrorBoundry extends Component {
+export default class ErrorBoundary extends Component {
     state = {
         hasError: false,
     };
@@ -19,6 +19,6 @@ export default class ErrorBoundry extends Component {
     }
 }
 
-ErrorBoundry.propTypes = {
+ErrorBoundary.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };

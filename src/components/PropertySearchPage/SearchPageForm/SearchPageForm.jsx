@@ -11,7 +11,7 @@ import fetchSearch from '../../../store/actions/fetchSearch';
 import fetchCoords from '../../../store/actions/fetchCoords';
 import ErrorIndicator from '../../Error/ErrorIndicator/ErrorIndicator';
 
-class SearchPageForm extends Component {
+export class SearchPageForm extends Component {
     state = {
         value: '',
         isRedirect: false,

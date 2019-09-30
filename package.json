@@ -29,6 +29,23 @@
             "git add"
         ]
     },
+    "jest": {
+        "verbose": true,
+        "clearMocks": false,
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+        "setupFilesAfterEnv": [
+            "<rootDir>src/setupTests.js"
+        ],
+        "testPathIgnorePatterns": [
+            "<rootDir>/(node_modules|.vscode)/"
+        ],
+        "collectCoverageFrom": [
+            "src/components/**/*.{js,jsx}"
+        ],
+        "moduleNameMapper": {
+            "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+        }
+    },
     "bugs": {
         "url": "https://github.com/dobernike/laboratory_practice/issues"
     },
@@ -45,6 +62,8 @@
         "babel-plugin-react-css-modules": "^5.2.6",
         "classnames": "^2.2.6",
         "css-loader": "^3.2.0",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
         "eslint": "^6.1.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-config-node": "^4.0.0",
@@ -59,6 +78,7 @@
         "html-webpack-plugin": "^3.2.0",
         "husky": "^3.0.5",
         "jest": "^24.9.0",
+        "jest-css-modules": "^2.1.0",
         "lint-staged": "^9.2.5",
         "postcss-loader": "^3.0.0",
         "postcss-nested": "^4.1.2",
