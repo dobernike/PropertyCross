@@ -60,6 +60,7 @@ class PropertyListingPage extends Component {
         return (
             <>
                 <div className={styles.wrapper}>
+                    <Button onClick={this.props.history.goBack}>Back</Button>
                     <Title>Property Details</Title>
                     <Button onClick={this.handleClick}>{isFavorite ? '-' : '+'}</Button>
                 </div>
@@ -78,6 +79,7 @@ class PropertyListingPage extends Component {
 
 PropertyListingPage.propTypes = {
     location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     apartmentsList: PropTypes.array.isRequired,
 };
 

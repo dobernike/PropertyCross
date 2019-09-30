@@ -1,3 +1,14 @@
-.matches {
-    margin-bottom: 0.5rem;
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.buttonBack {
+    margin-right: auto;
+}
+
+.text {
+    margin: 0 auto;
 }
