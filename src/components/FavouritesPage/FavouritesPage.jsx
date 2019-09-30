@@ -10,7 +10,7 @@ import ResultPageCart from '../SearchResultsPage/ResultPageCart/ResultPageCart';
 import getFavourite from '../../store/actions/getFavourite';
 import getApartmentId from '../../utils/getApartmentId';
 
-class FavouritesPage extends Component {
+export class FavouritesPage extends Component {
     state = {
         favorites: [],
     };
