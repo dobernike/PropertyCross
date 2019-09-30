@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './SearchResultsPage.css';
+import CustomLink from '../UI/CustomLink/CustomLink';
 import Text from '../UI/Typography/Text/Text';
 import ResultPageCart from './ResultPageCart/ResultPageCart';
 import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
@@ -58,11 +59,17 @@ class SearchResultsPage extends Component {
 
         return (
             <>
-                <div className={styles.matches}>
-                    <Text center bold>
-                        {apartmentsList.length} of {totalPages === 0 ? apartmentsList.length : totalPages} matches
-                    </Text>
+                <div className={styles.wrapper}>
+                    <div className={styles.buttonBack}>
+                        <CustomLink href="/">Back</CustomLink>
+                    </div>
+                    <div className={styles.text}>
+                        <Text bold>
+                            {apartmentsList.length} of {totalPages === 0 ? apartmentsList.length : totalPages} matches
+                        </Text>
+                    </div>
                 </div>
+
                 <InfiniteScroll loadMore={this.loadItems} hasMore={hasMore}>
                     <ul>
                         {apartmentsList.map((apartment) => (

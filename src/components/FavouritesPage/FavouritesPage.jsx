@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './FavouritesPage.css';
+import Button from '../UI/Button/Button';
 import Title from '../UI/Typography/Title/Title';
 import Text from '../UI/Typography/Text/Text';
 import ResultPageCart from '../SearchResultsPage/ResultPageCart/ResultPageCart';
@@ -23,7 +24,11 @@ class FavouritesPage extends Component {
 
         return (
             <>
-                <Title>Favourites</Title>
+                <div className={styles.wrapper}>
+                    <Button onClick={this.props.history.goBack}>Back</Button>
+                    <Title>Favourites</Title>
+                </div>
+
                 {favorites.length ? (
                     <ul>
                         {this.state.favorites.map((favorite) => (
@@ -49,6 +54,7 @@ class FavouritesPage extends Component {
 }
 
 FavouritesPage.propTypes = {
+    history: PropTypes.object.isRequired,
     getFavourite: PropTypes.func.isRequired,
 };
 
