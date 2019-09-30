@@ -45,7 +45,7 @@ export class FavouritesPage extends Component {
                     </ul>
                 ) : (
                     <div className={styles.text}>
-                        <Text center>You don`t have favorite item</Text>
+                        <Text center>You have not added any properties to your favourites</Text>
                     </div>
                 )}
             </>
