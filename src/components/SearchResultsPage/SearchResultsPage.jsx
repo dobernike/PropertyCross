@@ -60,11 +60,9 @@ class SearchResultsPage extends Component {
         return (
             <>
                 <div className={styles.wrapper}>
-                    <div className={styles.buttonBack}>
-                        <CustomLink href="/">Back</CustomLink>
-                    </div>
+                    <CustomLink href="/">Back</CustomLink>
                     <div className={styles.text}>
-                        <Text bold>
+                        <Text bold center>
                             {apartmentsList.length} of {totalPages === 0 ? apartmentsList.length : totalPages} matches
                         </Text>
                     </div>

@@ -5,10 +5,6 @@
     margin-bottom: 1rem;
 }
 
-.buttonBack {
-    margin-right: auto;
-}
-
 .text {
-    margin: 0 auto;
+    flex-grow: 1;
 }
