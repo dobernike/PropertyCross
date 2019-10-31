@@ -33,7 +33,7 @@
     "jest": {
         "verbose": true,
         "clearMocks": false,
-        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx|ts|tsx)$",
         "setupFilesAfterEnv": [
             "<rootDir>src/setupTests.js"
         ],
@@ -41,7 +41,7 @@
             "<rootDir>/(node_modules|.vscode)/"
         ],
         "collectCoverageFrom": [
-            "src/components/**/*.{js,jsx}"
+            "src/components/**/*.{js,jsx,ts,tsx}"
         ],
         "moduleNameMapper": {
             "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
@@ -56,8 +56,17 @@
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.6.0",
         "@ramda/includes": "^0.26.1",
         "@ramda/indexby": "^0.26.1",
+        "@types/classnames": "^2.2.9",
+        "@types/enzyme": "^3.10.3",
+        "@types/enzyme-adapter-react-16": "^1.0.5",
+        "@types/jest": "^24.0.18",
+        "@types/react": "^16.9.5",
+        "@types/react-dom": "^16.9.1",
+        "@types/react-redux": "^7.1.4",
+        "@types/react-router-dom": "^5.1.0",
         "autoprefixer": "^9.6.1",
         "babel-loader": "^8.0.6",
         "babel-plugin-react-css-modules": "^5.2.6",
@@ -90,10 +99,12 @@
         "redux-devtools-extension": "^2.13.8",
         "redux-thunk": "^2.3.0",
         "reset-css": "^4.0.1",
+        "source-map-loader": "^0.2.4",
         "style-loader": "^1.0.0",
-        "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.8",
-        "webpack-dev-server": "^3.8.0",
+        "webpack": "^4.41.1",
+        "webpack-cli": "^3.3.9",
+        "webpack-dev-server": "^3.8.2",
+        "webpack-hot-middleware": "^2.25.0",
         "whatwg-fetch": "2.0.0"
     },
     "dependencies": {
