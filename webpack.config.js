@@ -5,7 +5,7 @@ require('babel-polyfill');
 const postcssNesting = require('postcss-nested');
 
 module.exports = {
-    entry: ['babel-polyfill', './src/index.jsx'],
+    entry: ['babel-polyfill', './src/index.tsx'],
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index-bundle.js',
@@ -14,7 +14,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|tsx|ts)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
@@ -43,7 +43,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     },
     devServer: {
         historyApiFallback: true,
