@@ -1,93 +1,70 @@
-import React, { Component, ChangeEvent, FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 import SearchPageSearchedList from '../SearchPageSearchedList/SearchPageSearchedList';
 import fetchSearch from '../../../store/actions/fetchSearch';
 import fetchCoords from '../../../store/actions/fetchCoords';
 import ErrorIndicator from '../../Error/ErrorIndicator/ErrorIndicator';
-import { ThunkDispatch } from 'redux-thunk';
 
 const styles = require('./SearchPageForm.css');
 
-type State = {
-    value: string;
-    isRedirect: boolean;
-    errorMessage: string;
-};
-type Props = {
-    fetchSearch: (searchItem: string) => any;
-};
+function SearchPageForm() {
+    const dispatch = useDispatch();
+    const [value, setValue] = useState('');
+    const [isRedirect, setIsRedirect] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-export class SearchPageForm extends Component<Props, State> {
-    state: State = {
-        value: '',
-        isRedirect: false,
-        errorMessage: '',
-    };
-
-    handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
 
-        return this.setState({ value });
-    };
+        return setValue(value);
+    }, []);
 
-    handleSubmit = (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        const { value } = this.state;
 
         if (value === '') {
             return false;
         }
 
-        return this.props
-            .fetchSearch(value)
-            .then(() => this.setState({ isRedirect: true }))
-            .catch((err: Error) => this.setState({ errorMessage: err.toString() }));
+        return dispatch(fetchSearch(value))
+            .then(() => setIsRedirect(true))
+            .catch((err: Error) => setErrorMessage(err.toString()));
     };
 
-    handleClick = () => {
+    const handleClick = useCallback(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             return fetchCoords(`${position.coords.latitude},${position.coords.longitude}`)
-                .then(this.props.fetchSearch)
+                .then((city) => dispatch(fetchSearch(city)))
                 .catch(() => {
-                    this.setState({ value: 'London' });
-                    this.props.fetchSearch('London');
+                    setValue('London');
+                    dispatch(fetchSearch('London'));
                 })
-                .then(() => this.setState({ isRedirect: true }));
+                .then(() => setIsRedirect(true));
         });
-    };
+    }, []);
 
-    render() {
-        const { value, isRedirect, errorMessage } = this.state;
-
-        if (isRedirect) {
-            return <Redirect to={`/result?${value}`} />;
-        }
-
-        return (
-            <form onSubmit={this.handleSubmit} className={styles.form}>
-                <Input onChange={this.handleChange} value={value} placeholder="newcastle" />
-                <div className={styles.searchWrapper}>
-                    <div className={styles.submitButton}>
-                        <Button type="submit">Go</Button>
-                    </div>
-                    <Button type="button" onClick={this.handleClick}>
-                        My location
-                    </Button>
-                </div>
-                {errorMessage === '' ? <SearchPageSearchedList /> : <ErrorIndicator errorMessage={errorMessage} />}
-            </form>
-        );
+    if (isRedirect) {
+        return <Redirect to={`/result?${value}`} />;
     }
+
+    return (
+        <form onSubmit={handleSubmit} className={styles.form}>
+            <Input onChange={handleChange} value={value} placeholder="newcastle" />
+            <div className={styles.searchWrapper}>
+                <div className={styles.submitButton}>
+                    <Button type="submit">Go</Button>
+                </div>
+                <Button type="button" onClick={handleClick}>
+                    My location
+                </Button>
+            </div>
+            {errorMessage === '' ? <SearchPageSearchedList /> : <ErrorIndicator errorMessage={errorMessage} />}
+        </form>
+    );
 }
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => ({
-    fetchSearch: (searchItem: string) => dispatch(fetchSearch(searchItem)),
-});
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(SearchPageForm);
+export default SearchPageForm;

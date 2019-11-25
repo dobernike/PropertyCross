@@ -8,7 +8,7 @@ import addItemToStorage from './addItemToStorage';
 
 const PAGE_NUMBER = 1;
 
-function fetchSearch(searchItem: string) {
+function fetchSearch(searchItem: string): any {
     return async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
         await getApartmens(searchItem, PAGE_NUMBER);
 

@@ -4,9 +4,10 @@ import CustomLink from '../UI/CustomLink/CustomLink';
 import Text from '../UI/Typography/Text/Text';
 import Title from '../UI/Typography/Title/Title';
 import SearchPageForm from './SearchPageForm/SearchPageForm';
+
 const styles = require('./PropertySearchPage.css');
 
-function PropertySearchPage() {
+const PropertySearchPage = React.memo(() => {
     return (
         <>
             <div className={styles.wrapper}>
@@ -22,6 +23,6 @@ function PropertySearchPage() {
             <SearchPageForm />
         </>
     );
-}
+});
 
 export default PropertySearchPage;

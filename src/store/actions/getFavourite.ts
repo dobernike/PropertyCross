@@ -1,6 +1,6 @@
 import getLocalStorage from '../../services/localStorage/getLocalStorage';
 
-function getFavourite(key: string) {
+function getFavourite(key: string): any {
     return async () => await getLocalStorage(key);
 }
 

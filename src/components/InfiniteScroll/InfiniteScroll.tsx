@@ -1,41 +1,39 @@
-import React, { Component } from 'react';
+import React, { useEffect, ReactChild } from 'react';
 import throttle from '../../utils/throttle';
 
 type Props = {
     hasMore: boolean;
     loadMore: Function;
+    children: ReactChild;
 };
 
-class InfiniteScroll extends Component<Props> {
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
+const InfiniteScroll = React.memo((props: Props) => {
+    useEffect(() => {
+        const handleScroll = throttle(() => {
+            const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
+            const { body } = document;
+            const html = document.documentElement;
+            const docHeight = Math.max(
+                body.scrollHeight,
+                body.offsetHeight,
+                html.clientHeight,
+                html.scrollHeight,
+                html.offsetHeight
+            );
+            const windowBottom = Math.ceil(windowHeight + window.pageYOffset);
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
+            if (windowBottom >= docHeight && props.hasMore) {
+                props.loadMore();
+            }
+        }, 500);
 
-    handleScroll = throttle(() => {
-        const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const { body } = document;
-        const html = document.documentElement;
-        const docHeight = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-        );
-        const windowBottom = Math.ceil(windowHeight + window.pageYOffset);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [props.loadMore]);
 
-        if (windowBottom >= docHeight && this.props.hasMore) {
-            this.props.loadMore();
-        }
-    }, 500);
-
-    render() {
-        return <>{this.props.children}</>;
-    }
-}
+    return <>{props.children}</>;
+});
 
 export default InfiniteScroll;

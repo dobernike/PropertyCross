@@ -9,12 +9,8 @@ type Props = {
     value: string;
 };
 
-function Input({ onChange, value, type, placeholder }: Props) {
+const Input = React.memo(({ onChange, value, type = 'text', placeholder }: Props) => {
     return <input className={styles.search} onChange={onChange} value={value} type={type} placeholder={placeholder} />;
-}
-
-Input.defaultProps = {
-    type: 'text',
-};
+});
 
 export default Input;
