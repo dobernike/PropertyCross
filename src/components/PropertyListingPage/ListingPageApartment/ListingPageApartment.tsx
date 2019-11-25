@@ -2,7 +2,7 @@ import React from 'react';
 import { Apartment } from '../../../store/reducers/apartmentsListReducer';
 const styles = require('./ListingPageApartment.css');
 
-function ListingPageApartment({ price, title, img, bedroom, bathroom, summary }: Apartment) {
+const ListingPageApartment = React.memo(({ price, title, img, bedroom, bathroom, summary }: Apartment) => {
     return (
         <>
             <p className={styles.price}>{price}</p>
@@ -14,6 +14,6 @@ function ListingPageApartment({ price, title, img, bedroom, bathroom, summary }:
             <p>{summary}</p>
         </>
     );
-}
+});
 
 export default ListingPageApartment;

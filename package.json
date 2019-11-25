@@ -20,8 +20,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "npm test"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
@@ -73,7 +72,7 @@
         "classnames": "^2.2.6",
         "css-loader": "^3.2.0",
         "enzyme": "^3.10.0",
-        "enzyme-adapter-react-16": "^1.14.0",
+        "enzyme-adapter-react-16": "^1.15.1",
         "eslint": "^6.1.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-config-node": "^4.0.0",

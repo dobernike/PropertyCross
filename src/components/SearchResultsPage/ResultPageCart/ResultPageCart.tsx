@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Apartment } from '../../../store/reducers/apartmentsListReducer';
 import Text from '../../UI/Typography/Text/Text';
 
 const styles = require('./ResultPageCart.css');
 
-function SearchResultsPage({ id, city, img, price, bedroom, title }: Apartment) {
+const SearchResultsPage = React.memo(({ id, city, img, price, bedroom, title }: Apartment) => {
     return (
         <li>
             <Link to={`/listing?${city}#${id}`} className={styles.link}>
@@ -23,6 +24,6 @@ function SearchResultsPage({ id, city, img, price, bedroom, title }: Apartment) 
             </Link>
         </li>
     );
-}
+});
 
 export default SearchResultsPage;

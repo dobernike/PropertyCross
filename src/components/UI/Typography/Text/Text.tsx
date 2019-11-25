@@ -10,7 +10,7 @@ type Props = {
     children: ReactNode;
 };
 
-function Text({ bold, center, fontSizeMiddle, children }: Props) {
+const Text = React.memo(({ bold, center, fontSizeMiddle, children }: Props) => {
     return (
         <p
             className={cx(styles.text, {
@@ -22,6 +22,6 @@ function Text({ bold, center, fontSizeMiddle, children }: Props) {
             {children}
         </p>
     );
-}
+});
 
 export default Text;

@@ -7,7 +7,7 @@ type Props = {
     onClick: Function;
 };
 
-function SearchPageItem({ onClick, item }: Props) {
+const SearchPageItem = React.memo(({ onClick, item }: Props) => {
     return (
         <li className={styles.item}>
             <button className={styles.button} type="button" onClick={onClick.bind(null, item)}>
@@ -15,6 +15,6 @@ function SearchPageItem({ onClick, item }: Props) {
             </button>
         </li>
     );
-}
+});
 
 export default SearchPageItem;

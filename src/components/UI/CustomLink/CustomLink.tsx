@@ -8,12 +8,12 @@ type Props = {
     children: ReactNode;
 };
 
-function CustomLink({ href, children }: Props) {
+const CustomLink = React.memo(({ href, children }: Props) => {
     return (
         <Link to={href} className={styles.link}>
             {children}
         </Link>
     );
-}
+});
 
 export default CustomLink;

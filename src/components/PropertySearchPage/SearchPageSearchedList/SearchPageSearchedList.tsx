@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Text from '../../UI/Typography/Text/Text';
 import SearchPageItem from '../SearchPageItem/SearchPageItem';
 import { SEARCH_STORAGE } from '../../../store/constants/constants';
@@ -10,63 +10,37 @@ import { RootState } from '../../../store/reducers/rootReducer';
 
 const styles = require('./SearchPageSearchedList.css');
 
-type State = {
-    redirectValue: string;
-};
-type Props = {
-    searchedList: string[];
-    searchedListLoad: (key: string) => any;
-};
+function SearchPageSearchedList() {
+    const searchedList = useSelector((state: RootState) => state.searchedList.searchedList);
+    const dispatch = useDispatch();
+    const [redirectValue, setRedirectValue] = useState('');
 
-class SearchPageSearchedList extends Component<Props, State> {
-    state: State = {
-        redirectValue: '',
-    };
+    useEffect(() => {
+        dispatch(searchedListLoad(SEARCH_STORAGE));
+    }, []);
 
-    componentDidMount() {
-        this.props.searchedListLoad(SEARCH_STORAGE);
+    const handleRedirect = useCallback((redirectValue: string) => {
+        setRedirectValue(redirectValue);
+    }, []);
+
+    if (redirectValue !== '') {
+        return <Redirect to={`/result?${redirectValue}`} />;
     }
 
-    handleRedirect = (redirectValue: string) => {
-        this.setState({ redirectValue });
-    };
-
-    render() {
-        const { redirectValue } = this.state;
-        const { searchedList } = this.props;
-
-        if (redirectValue !== '') {
-            return <Redirect to={`/result?${redirectValue}`} />;
-        }
-
-        return (
-            <>
-                <div className={styles.info}>
-                    <Text>Recent searches:</Text>
-                </div>
-                <ul className={styles.list}>
-                    {searchedList.length > 0 ? (
-                        searchedList.map((item) => (
-                            <SearchPageItem key={item} item={item} onClick={this.handleRedirect} />
-                        ))
-                    ) : (
-                        <p>Ваша история поиска чиста</p>
-                    )}
-                </ul>
-            </>
-        );
-    }
+    return (
+        <>
+            <div className={styles.info}>
+                <Text>Recent searches:</Text>
+            </div>
+            <ul className={styles.list}>
+                {searchedList.length > 0 ? (
+                    searchedList.map((item) => <SearchPageItem key={item} item={item} onClick={handleRedirect} />)
+                ) : (
+                    <p>Ваша история поиска чиста</p>
+                )}
+            </ul>
+        </>
+    );
 }
 
-const mapStateToProps = (state: RootState) => ({
-    searchedList: state.searchedList.searchedList,
-});
-
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => ({
-    searchedListLoad: (key: string) => dispatch(searchedListLoad(key)),
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SearchPageSearchedList);
+export default SearchPageSearchedList;

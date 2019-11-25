@@ -8,16 +8,12 @@ type Props = {
     onClick?: () => void;
 };
 
-function Button({ type, onClick, children }: Props) {
+const Button = React.memo(({ type = 'button', onClick, children }: Props) => {
     return (
         <button className={styles.button} type={type} onClick={onClick}>
             {children}
         </button>
     );
-}
-
-Button.defaultProps = {
-    type: 'button',
-};
+});
 
 export default Button;

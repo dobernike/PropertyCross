@@ -1,12 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactChild } from 'react';
 
 const styles = require('./Layout.css');
 
-type Props = {
-    children: ReactNode;
-};
-
-function Layout({ children }: Props) {
+function Layout({ children }: { children: ReactChild }) {
     return <main className={styles.container}>{children}</main>;
 }
 
