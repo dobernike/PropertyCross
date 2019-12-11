@@ -1,17 +1,17 @@
 # laboratory_practice
 
-## Как установить пакеты?
+## How to install?
 
-Для установки пакетов используйте комманду `npm install`
+Run command `npm install`
 
-## Как запустить?
+## How to run?
 
-Для запуска 'dev' версии используйте `npm start`. Для создания 'production' версии используйте `npm build`
+For run 'dev' version use `npm start`. For build bundle to 'production' use `npm build`
 
-## Куда заходить после запуска (путь/порт)?
+## Where I can found it (ip|port)?
 
-После запуска комманды `npm start` проект откроется в вашем 'default' браузере. Если по каким то причинам это не произошло, то перейдите по адресу: http://localhost:8080/
+After run command `npm start` project open in your 'default' browser. If it isn`t, open next link: http://localhost:8080/
 
-## Браузер блокирует CORS с localhost?
+## Browser blocked CORS in localhost?
 
-Если у вас браузер хром, вам необходимо установить расширение для обхода. Например - Moesif Orign: `https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc`
+If your browser `google chrome`, you need install extension for fix it. For example - Moesif Orign: `https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc`
