@@ -1,0 +1,18 @@
+<style>
+  .container {
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 90vh;
+
+    font-family: sans-serif;
+  }
+</style>
+
+<main class="container">
+  <slot />
+</main>

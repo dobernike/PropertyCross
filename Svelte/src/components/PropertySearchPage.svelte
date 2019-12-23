@@ -1,0 +1,16 @@
+<script>
+
+</script>
+
+<style>
+  .wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .info {
+    margin-bottom: 0.5rem;
+  }
+</style>
